@@ -15,10 +15,14 @@
 ![s1a](https://github.com/neoedmund/neoe-arduino-clock1/raw/master/pic/s1a.jpg "s1a")
 ![s1](https://github.com/neoedmund/neoe-arduino-clock1/raw/master/pic/s1.jpg "s1")
 
+
+准备好扩展板
+
 ![准备好扩展板](https://github.com/neoedmund/neoe-arduino-clock1/raw/master/pic/s2.jpg "准备好扩展板")
 
 写程序
 clock1.ino
+用arduino UNO调试成功
 
 ![用arduino UNO调试成功](https://github.com/neoedmund/neoe-arduino-clock1/raw/master/pic/s3.jpg "用arduino UNO调试成功")
 
@@ -27,11 +31,13 @@ clock1.ino
 ![转到arduino mini pro](https://github.com/neoedmund/neoe-arduino-clock1/raw/master/pic/s4.jpg "转到arduino mini pro")
 
 
+使用最艰苦的焊接
 ![使用最艰苦的焊接](https://github.com/neoedmund/neoe-arduino-clock1/raw/master/pic/s5.jpg "使用最艰苦的焊接")
 
 
+成功！
 ![成功](https://github.com/neoedmund/neoe-arduino-clock1/raw/master/pic/s6.jpg "成功")
 
-
+成功了！
 ![成功2](https://github.com/neoedmund/neoe-arduino-clock1/raw/master/pic/s6a.jpg "成功2")
 
