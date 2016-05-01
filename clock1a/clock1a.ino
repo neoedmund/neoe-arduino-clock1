@@ -57,14 +57,16 @@ void showTime(uint8_t s1, uint8_t h2, uint8_t m1, uint8_t m2) {
   	dot1 = true;
   	h2 = h2 % 12;
   }
-  selectPos(1);
-  showDot(dot1);
-  showRaw2(s1, false);  
-  delay(3);
   
   showDigit(h2, 2, false, true);
   showDigit(m1, 3, true, true);
   showDigit(m2, 4, false, false);
+  
+  selectPos(1);
+  showDot(dot1);
+  showRaw2(s1, false);  
+  delay(3);
+
 }
 
 void selectPos(uint8_t pos) {
@@ -133,7 +135,8 @@ int cnt = 0;
 uint8_t h1 = 0, h2 = 0, m1 = 0, m2 = 0, s1 = 0;
 void loop ()
 {
-  if (cnt++ % 100 == 0) {
+
+  if (cnt++ % 83 == 0) {
     now = rtc.now();
     uint8_t  hour = now.hour();
     uint8_t  minute = now.minute();
