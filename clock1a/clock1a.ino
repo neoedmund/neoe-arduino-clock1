@@ -21,8 +21,8 @@ uint8_t segs[] = {
   B1111111, // 8
   B0111111, // 9
   B1011111, // A
-  B1110011, // b 
-  B1100001, // c
+  B1110011, // b
+//  B1100001, // c
 };
 
 uint8_t segmap[]  = {
@@ -34,6 +34,10 @@ uint8_t segmap_reversed []  = {
 };
 
 DateTime now;
+uint8_t  h2 = 0, m1 = 0, m2 = 0, s1 = 0, hour1, minute1, second1;
+unsigned long hour, minute, second;
+unsigned long t1=0,t2;
+
 
 void setup ()
 {
@@ -46,26 +50,30 @@ void setup ()
   now = rtc.now();
 }
 
-uint32_t old_ts;
-
 
 // hh:mm
-void showTime(uint8_t s1, uint8_t h2, uint8_t m1, uint8_t m2) {
-  
+void showTime() {
+    h2 = hour;
+    m1 = minute / 10;
+    m2 = minute % 10;
+    s1 = second;
+    
   boolean dot1 = false;
-  if (h2>12) {
+  if (h2 >= 12) {
   	dot1 = true;
   	h2 = h2 % 12;
   }
-  
+
+  selectPos(1);
+  showDot(dot1);
+  showRaw2(s1, false);
+  delay(2);
+
   showDigit(h2, 2, false, true);
   showDigit(m1, 3, true, true);
   showDigit(m2, 4, false, false);
-  
-  selectPos(1);
-  showDot(dot1);
-  showRaw2(s1, false);  
-  delay(3);
+
+
 
 }
 
@@ -90,7 +98,7 @@ void showDot(boolean dot) {
     digitalWrite(segmap[7], high);
   } else {
     digitalWrite(segmap[7], low);
-  }  
+  }
 }
 /**
   digit 0-9
@@ -100,7 +108,7 @@ void showDigit(uint8_t digit, uint8_t pos, boolean reverse, boolean dot) {
   selectPos(pos);
   // output dot
   showDot(dot);
-  // output 7 seg 
+  // output 7 seg
   int v = digit;
   if (v < 0) v = 0; if (v > 12) v = v % 12;
   v = segs[v];
@@ -131,22 +139,42 @@ void showRaw2(uint8_t v, boolean reverse) {
     v = v >> 1;
   }
 }
-int cnt = 0;
-uint8_t h1 = 0, h2 = 0, m1 = 0, m2 = 0, s1 = 0;
+
+void adjustTimeLocal() {
+	int secAdd = (t2-t1)/1000;
+	hour = hour1;
+	minute = minute1;
+	second = second1;
+	second += secAdd;
+	if (second >= 60 ){
+		minute += second / 60;
+		second %=  60;
+	}
+	if (minute >= 60){
+		hour += minute/ 60;
+		minute %= 60;
+	}
+	if (hour >= 24) {
+		hour %= 24;
+	}
+}
+void getRTC() {
+    now = rtc.now(); // cost time
+    hour1 = now.hour();
+    minute1 = now.minute();
+    second1 = now.second();
+    t1 = millis();
+}
 void loop ()
 {
 
-  if (cnt++ % 83 == 0) {
-    now = rtc.now();
-    uint8_t  hour = now.hour();
-    uint8_t  minute = now.minute();
-    uint8_t  second = now.second();
-    h1 = hour;
-    m1 = minute / 10;
-    m2 = minute % 10;
-    s1 = second;
+  t2 = millis();
+  if (t1==0||t2-t1>1000000){  //every 1000sec = 1000/60= 16.66666667 minutes
+  	getRTC();
   }
   
-  showTime(s1, h1, m1, m2);
+  adjustTimeLocal();
+  
+  showTime();
 
 }
