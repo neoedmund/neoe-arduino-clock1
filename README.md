@@ -62,5 +62,5 @@ high lights:
 * no button needed for adjusting time, thanks DS3231.
 * worked 24x7 for more than 6 months and stable.
 
-
+![clock2b](https://github.com/neoedmund/neoe-arduino-clock1/raw/master/pic/clock2b.jpg "clock2b")
 
