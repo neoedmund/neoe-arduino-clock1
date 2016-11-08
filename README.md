@@ -56,7 +56,7 @@ Schematics is something like this, I lost it!
 ![Schematics](https://github.com/neoedmund/neoe-arduino-clock1/raw/master/pic/zpBOD.png "Schematics")
 
 
-high lights:
+Highlights:
 * only 3 transistors (http://electronics.stackexchange.com/questions/233157/driving-large-common-anode-7-seg-led-with-npn-transistor-and-arduino-worked-but/233245#233245)
 * only 3 LED, A=10 and b=11
 * no button needed for adjusting time, thanks DS3231.
