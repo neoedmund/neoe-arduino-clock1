@@ -65,7 +65,7 @@ Highlights:
 ![clock2b](https://github.com/neoedmund/neoe-arduino-clock1/raw/master/pic/clock2b.jpg "clock2b")
 
 
-A new made 3 digit clock with PCB.
+A new made 3 digit clock with PCB. (which can be bought on ![Taobao](https://item.taobao.com/item.htm?spm=a230r.1.14.39.ebb2eb27s4X9X&id=547657171015&ns=1&abbucket=20#detail) )
 
 ![clock2bpcb](https://github.com/neoedmund/neoe-arduino-clock1/raw/master/pic/clockwithpcb.jpg "clock2bpcb")
 
